@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "sobres",
+  "info": {
+    "name": "sobre",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "intro": {
+      "type": "string",
+      "required": true
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "sobre": {
+      "type": "richtext",
+      "required": true
+    },
+    "perguntas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "faq.faq"
+    },
+    "imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

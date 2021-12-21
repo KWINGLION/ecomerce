@@ -1,9 +1,13 @@
-import styled from "styled-components";
-import { theme } from "../../styles/theme";
+import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 
 const Wrapper = styled.div`
   display: grid;
   gap: 0.6rem;
+  label {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
   input {
     background: #ffffff;
     border: 3px solid #e0dfdf;
@@ -23,12 +27,12 @@ const Wrapper = styled.div`
 `;
 
 const Input = (
-  { placeholder, type, value, name, onChange, onBlur, error },
+  { placeholder, type, value, label, name, onChange, onBlur, error },
   key
 ) => {
   return (
     <Wrapper key={key}>
-      <label htmlFor={name}>{name}</label>
+      <label htmlFor={name}>{label}</label>
       <input
         type={type}
         name={name}

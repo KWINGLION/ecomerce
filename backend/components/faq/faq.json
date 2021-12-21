@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_faq_faqs",
+  "info": {
+    "name": "faq",
+    "icon": "adjust"
+  },
+  "options": {},
+  "attributes": {
+    "pergunta": {
+      "type": "string",
+      "required": true
+    },
+    "resposta": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

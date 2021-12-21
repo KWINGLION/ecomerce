@@ -1,5 +1,5 @@
-import React from "react";
-import { GET_USERDATA, USER_GET, USER_REGISTER } from "../services/Api";
+import React from 'react';
+import { GET_USERDATA, USER_GET, USER_REGISTER } from '../services/Api';
 
 export const UserContext = React.createContext(null);
 
@@ -8,6 +8,14 @@ export const UserStorage = ({ children }) => {
   const [user, setUser] = React.useState(null);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+
+  const UserLogout = () => {
+    setIsAuthenticate(false);
+    setLoading(false);
+    setUser(null);
+    setError(null);
+    window.localStorage.removeItem('token');
+  };
 
   const getUserWithToken = async (token) => {
     setLoading(true);
@@ -29,7 +37,7 @@ export const UserStorage = ({ children }) => {
       const response = await fetch(url, options);
       const json = await response.json();
       if (!response.ok) throw new Error(json.message[0].messages[0].message);
-      window.localStorage.setItem("token", json.jwt);
+      window.localStorage.setItem('token', json.jwt);
       setUser(json.user);
       setIsAuthenticate(true);
     } catch (err) {
@@ -50,7 +58,7 @@ export const UserStorage = ({ children }) => {
       const response = await fetch(url, options);
       const json = await response.json();
       if (!response.ok) throw new Error(json.message[0].messages[0].message);
-      window.localStorage.setItem("token", json.jwt);
+      window.localStorage.setItem('token', json.jwt);
       setUser(json.user);
       setIsAuthenticate(true);
     } catch (err) {
@@ -59,7 +67,7 @@ export const UserStorage = ({ children }) => {
     setLoading(false);
   };
   React.useEffect(() => {
-    const token = window.localStorage.getItem("token");
+    const token = window.localStorage.getItem('token');
     if (token) {
       getUserWithToken(token);
     }
@@ -74,6 +82,7 @@ export const UserStorage = ({ children }) => {
     user,
     error,
     loading,
+    UserLogout,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

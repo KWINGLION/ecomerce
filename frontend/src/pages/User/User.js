@@ -1,30 +1,63 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../Context/UserContext";
+import React from 'react';
+import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
+import { UserContext } from '../../Context/UserContext';
+import Page404 from '../Page404/Page404';
+import { Container, Title } from '../../styles/styles';
+import { UserContent, UserDash, UserIntro, UserMain, UserPage } from './styles';
+import UserOrders from './UserOrders';
+import UserAccount from './UserAccount';
+import UserAccountEdit from './UserAccountEdit';
+import UserAccountList from './UserAccountList';
 
 const User = () => {
-  const { isAuthenticate } = React.useContext(UserContext);
-  const navigate = useNavigate();
-  console.log("Pagina user");
+  const { isAuthenticate, user, UserLogout } = React.useContext(UserContext);
 
-  React.useEffect(() => {
-    if (isAuthenticate === false) {
-      navigate("/login");
-    } else {
-    
-    }
-  }, [isAuthenticate, navigate]);
+  const handleLogout = (e) => {
+    e.preventDefault();
+    UserLogout();
+  };
 
-  if (isAuthenticate)
-    return (
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse possimus
-        nobis odio eos eum numquam exercitationem voluptate. Debitis quidem
-        nobis dolore dicta explicabo. Debitis illum ut perspiciatis! Itaque,
-        vitae maxime!
-      </div>
-    );
-  return null;
+  if (!isAuthenticate) {
+    return <Navigate to='/login' />;
+  }
+  return (
+    <Container>
+      <UserPage>
+        <UserIntro>
+          <Title>Bem vindo, {user.username} </Title>
+        </UserIntro>
+        <UserMain>
+          <UserDash>
+            <ul>
+              <li>
+                <NavLink to='' end>
+                  Dados
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='orders'>Meus pedidos</NavLink>
+              </li>
+              <li>
+                <NavLink to='logout' onClick={handleLogout}>
+                  Sair
+                </NavLink>
+              </li>
+            </ul>
+          </UserDash>
+          <UserContent>
+            <Routes>
+              <Route path='' element={<UserAccount />}>
+                <Route path='' element={<UserAccountList />} />
+                <Route path='edit' element={<UserAccountEdit />} />
+              </Route>
+              <Route path='orders' element={<UserOrders />} />
+              <Route path='*' element={<Page404 />} />
+            </Routes>
+          </UserContent>
+        </UserMain>
+      </UserPage>
+    </Container>
+  );
 };
 
 export default User;

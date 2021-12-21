@@ -40,7 +40,7 @@ s,
 samp,
 small,
 strike,
-strong,
+
 sub,
 sup,
 tt,

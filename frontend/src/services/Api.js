@@ -1,79 +1,92 @@
-const url = "http://localhost:1337/";
+const url = 'http://localhost:1337/';
 
 export function GET_HOME_CONTENT() {
   return {
-    url: url + "home",
+    url: url + 'home',
     options: {
-      method: "GET",
+      method: 'GET',
     },
   };
 }
 export function GET_ABOUT_CONTENT() {
   return {
-    url: url + "sobre",
+    url: url + 'sobre',
     options: {
-      method: "GET",
+      method: 'GET',
     },
   };
 }
 export function GET_PRODUCTS() {
   return {
-    url: url + "categorias",
+    url: url + 'categorias',
     options: {
-      method: "GET",
+      method: 'GET',
     },
   };
 }
 export function GET_FAQ() {
   return {
-    url: url + "encomendar",
+    url: url + 'encomendar',
     options: {
-      method: "GET",
+      method: 'GET',
     },
   };
 }
 export function USER_REGISTER(data) {
   return {
-    url: url + "auth/local/register",
+    url: url + 'auth/local/register',
     options: {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     },
   };
 }
 export function USER_GET(data) {
   return {
-    url: url + "auth/local",
+    url: url + 'auth/local',
     options: {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     },
   };
 }
 export function FORGOTTEN_PASSWORD(email) {
   return {
-    url: url + "auth/forgot-password",
+    url: url + 'auth/forgot-password',
     options: {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(email),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     },
   };
 }
 export function GET_USERDATA(token) {
   return {
-    url: url + "users/me",
+    url: url + 'users/me',
     options: {
-      method: "GET",
+      method: 'GET',
       headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+}
+export function USERDATA_UPDATE(id, token, data) {
+  return {
+    url: url + `users/${id}`,
+    options: {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     },

@@ -1,24 +1,24 @@
-import React from "react";
+import React from 'react';
 
 const Types = {
   name: {
     regex: /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
-    message: "Digite um nome valido",
+    message: 'Digite um nome valido',
   },
   email: {
     regex:
       /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i,
-    message: "Preecha um email valido",
+    message: 'Preecha um email valido',
   },
   password: {
     regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-    message: "Minimum eight characters, at least one letter and one number",
+    message: 'Minimum eight characters, at least one letter and one number',
   },
 };
 
-const useForm = (type) => {
-  const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState("");
+const useForm = (type, initial) => {
+  const [value, setValue] = React.useState(initial || '');
+  const [error, setError] = React.useState('');
 
   function onChange({ target }) {
     if (error) validate(target.value);
@@ -27,7 +27,7 @@ const useForm = (type) => {
   function validate(value) {
     if (type === false) return true;
     if (value.length === 0) {
-      setError("Preencha um valor");
+      setError('Preencha um valor');
       return false;
     } else if (Types[type] && !Types[type].regex.test(value)) {
       setError(Types[type].message);

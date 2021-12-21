@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "encomendars",
+  "info": {
+    "name": "Encomendar"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "encomendar": {
+      "type": "component",
+      "repeatable": true,
+      "component": "faq.encomendar"
+    }
+  }
+}

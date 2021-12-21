@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_faq_encomendars",
+  "info": {
+    "name": "encomendar",
+    "icon": "arrow-alt-circle-down"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "richtext"
+    },
+    "imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

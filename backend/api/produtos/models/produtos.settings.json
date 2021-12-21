@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produtos",
+  "info": {
+    "name": "produtos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fotos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": ["images"],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "nome": {
+      "type": "string"
+    },
+    "preco": {
+      "type": "integer",
+      "required": true
+    },
+    "descricao": {
+      "type": "richtext",
+      "required": true
+    },
+    "categorias": {
+      "collection": "produtos",
+      "via": "categorias"
+    }
+  }
+}

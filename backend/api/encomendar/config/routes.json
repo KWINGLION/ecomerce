@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/encomendar",
+      "handler": "encomendar.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/encomendar",
+      "handler": "encomendar.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/encomendar",
+      "handler": "encomendar.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

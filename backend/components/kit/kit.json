@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_kit_kits",
+  "info": {
+    "name": "kit",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "nome": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

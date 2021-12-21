@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_cupcakes_cupcakes",
+  "info": {
+    "name": "cupcakes",
+    "icon": "beer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "produtos": {
+      "collection": "produtos"
+    }
+  }
+}
